@@ -40,8 +40,9 @@ def test_guess_number_binary():
     """
     assert guess_number_binary(2, 1, 100) 
     assert guess_number_binary(5, 1, 100) 
-    #test_guess_number_binary()
+    
 print("Все тесты пройдены!")
 
 if __name__ == "__main__":
+    test_guess_number_binary()
     main()

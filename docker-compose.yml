@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Первый экземпляр - классический ping-pong
+  pinger1:
+    build: ./app
+    container_name: ping-pong-1
+    ports:
+      - "5001:5000"
+    environment:
+      - APP_PORT=5000
+      - PONG_MESSAGE= Pong from service #1!
+    restart: unless-stopped
+
+  # Второй экземпляр - с кастомным ответом
+  pinger2:
+    build: ./app
+    container_name: ping-pong-2
+    ports:
+      - "5002:5000"
+    environment:
+      - APP_PORT=5000
+      - PONG_MESSAGE= Tennis ball! (pong from #2)
+    restart: unless-stopped
+
+  # Третий экземпляр - с ответом на русском
+  pinger3:
+    build: ./app
+    container_name: ping-pong-3
+    ports:
+      - "5003:5000"
+    environment:
+      - APP_PORT=5000
+      - PONG_MESSAGE=🇷🇺 Привет! Это pong от третьего сервиса
+    restart: unless-stopped
